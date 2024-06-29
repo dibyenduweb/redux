@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { addTodo } from "../features/todo/todoSlice";
+
 import { useDispatch } from "react-redux";
 
 export default function AddForm() {
@@ -10,7 +11,7 @@ export default function AddForm() {
     evt.preventDefault();
     console.log(task);
     dispatch(addTodo(task));
-    setTask("");
+  
   };
 
   return (
