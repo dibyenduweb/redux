@@ -14,9 +14,23 @@ export const todoSlice = createSlice({
       const newTodo = {
         id: 123,
         task: action.payload,
-        isDone:false,
+        isDone: false,
       };
       state.todos.push(newTodo); //direct mutation ...
     },
+    deleteTodo: (state, action) => {
+      //action .paylad
+      state.todos = state.todos.filter((todo) => todo.id != action.payload);
+    },
+    markAsDone: (state, action) => {
+      state.todos = state.todos.map((todo) => {
+        if (todo.id === action.payload) {
+          todo.isDone = true;
+        }
+      });
+    },
   },
 });
+
+export const { addTodo, deleteTodo, markAsDone } = todoSlice.actions;
+export default todoSlice.reducer;
